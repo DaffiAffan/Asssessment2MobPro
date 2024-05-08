@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Assessment2 MobPro</string>
     <string name="list_kosong">Belum ada data </string>
+    <string name="x_diklik">%1$s diklik! </string>
+
+    <string name="tambah_mobil">Tambah Mobil </string>
+    <string name="belum_bisa_tambah">Belum bisa tambah mobil </string>
 </resources>
