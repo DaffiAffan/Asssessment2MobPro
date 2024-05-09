@@ -10,4 +10,11 @@
 
     <string name="kembali">Kembali</string>
     <string name="simpan">Simpan</string>
+
+    <string name="edit_mobil">Ubah mobil</string>
+
+    <string name="invalid">nama dan jenis mobil tidak boleh kosong.</string>
+
+    <string name="lainnya">Opsi lainnya</string>
+    <string name="hapus">Hapus </string>
 </resources>

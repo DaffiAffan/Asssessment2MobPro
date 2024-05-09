@@ -1,8 +1,7 @@
 package org.d3if0146.assessment2mobpro.ui.screen
 
-import android.content.res.Configuration
 import android.graphics.drawable.Icon
-import android.widget.Toast
+import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,6 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -35,9 +36,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.d3if0146.assessment2mobpro.R
+import org.d3if0146.assessment2mobpro.database.MobilDb
 import org.d3if0146.assessment2mobpro.model.Mobil
 import org.d3if0146.assessment2mobpro.navigation.Screen
 import org.d3if0146.assessment2mobpro.ui.theme.Assessment2MobProTheme
+import org.d3if0146.assessment2mobpro.util.ViewModelFactory
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -73,16 +76,20 @@ fun MainScreen(navController: NavHostController){
             }
         }
     ) { padding ->
-        ScreenContent(Modifier.padding(padding))
+        ScreenContent(Modifier.padding(padding), navController)
 
     }
 }
 
 @Composable
-fun ScreenContent(modifier: Modifier) {
-    val viewModel: MainViewModel = viewModel()
-    val data = viewModel.data
+fun ScreenContent(modifier: Modifier, navController: NavHostController) {
+
     val context = LocalContext.current
+    val db = MobilDb.getInstance(context)
+    val factory = ViewModelFactory(db.dao)
+    val viewModel: MainViewModel = viewModel(factory = factory)
+    val data by viewModel.data.collectAsState()
+
     if (data.isEmpty()) {
         Column(
             modifier = modifier
@@ -100,8 +107,7 @@ fun ScreenContent(modifier: Modifier) {
         ) {
             items(data) {
                 ListItem(mobil = it) {
-                    val pesan = context.getString(R.string.x_diklik, it.nama)
-                    Toast.makeText(context, pesan, Toast.LENGTH_SHORT).show()
+                    navController.navigate(Screen.FormUbah.withId(it.id))
                 }
                 Divider()
             }
