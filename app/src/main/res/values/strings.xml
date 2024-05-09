@@ -4,5 +4,10 @@
     <string name="x_diklik">%1$s diklik! </string>
 
     <string name="tambah_mobil">Tambah Mobil </string>
-    <string name="belum_bisa_tambah">Belum bisa tambah mobil </string>
+
+    <string name="nama">Nama</string>
+    <string name="isi">Mobil</string>
+
+    <string name="kembali">Kembali</string>
+    <string name="simpan">Simpan</string>
 </resources>
