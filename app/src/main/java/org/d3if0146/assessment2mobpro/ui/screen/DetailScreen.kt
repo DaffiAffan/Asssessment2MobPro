@@ -63,6 +63,8 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
     var jenis by remember { mutableStateOf("") }
     var merek by remember { mutableStateOf("") }// ngambil nama variable dari sini
 
+    var showDialog by remember { mutableStateOf(false) }
+
     LaunchedEffect(true) {
         if (id == null) return@LaunchedEffect
         val data = viewModel.getMobil(id) ?: return@LaunchedEffect
@@ -115,7 +117,12 @@ fun DetailScreen(navController: NavHostController, id: Long? = null) {
                         )
                     }
                     if (id != null) {
-                        DeleteAction {
+                        DeleteAction { showDialog = true  }
+                        DisplayAlertDialog(
+                            openDialog = showDialog,
+                            onDismissRequest = { showDialog = false }
+                        ) {
+                            showDialog = false
                             viewModel.delete(id)
                             navController.popBackStack()
                         }
