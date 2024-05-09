@@ -13,7 +13,7 @@ class DetailViewModel(private val dao: MobilDao) : ViewModel() {
         val mobil = Mobil(
             nama = nama,
             jenis = jenis,
-            merek = merek,
+            merek = merek
         )
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -29,7 +29,7 @@ class DetailViewModel(private val dao: MobilDao) : ViewModel() {
             id      = id,
             nama = nama,
             jenis   = jenis,
-            merek = merek,
+            merek = merek
         )
 
         viewModelScope.launch(Dispatchers.IO) {
