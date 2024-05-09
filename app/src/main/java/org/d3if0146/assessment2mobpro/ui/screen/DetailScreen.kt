@@ -224,7 +224,7 @@ fun FormMobil(
             }
         }
         Column {
-            Text(text = "Pilih Merek")
+            Text(text = "Merek Mobil")
             listOf("Nissan", "BMW", "Volvo", "Buggati", "Esemka").forEach { merekOption ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

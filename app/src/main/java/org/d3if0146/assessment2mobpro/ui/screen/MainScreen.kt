@@ -188,8 +188,8 @@ fun GridItem(mobil: Mobil, onClick: () -> Unit) {
                 overflow = TextOverflow.Ellipsis,
                 fontWeight = FontWeight.Bold
             )
-            Text(text = mobil.jenis, maxLines = 4, overflow = TextOverflow.Ellipsis)
-            Text(text = mobil.merek)
+            Text(text = mobil.merek, maxLines = 4, overflow = TextOverflow.Ellipsis)
+
         }
     }
 }
@@ -214,8 +214,7 @@ fun ListItem(mobil: Mobil, onClick: () -> Unit) {
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Bold
         )
-        Text(text = mobil.jenis, maxLines = 2, overflow = TextOverflow.Ellipsis)
-        Text(text = mobil.merek)
+        Text(text = mobil.merek, maxLines = 2, overflow = TextOverflow.Ellipsis)
     }
 }
 
